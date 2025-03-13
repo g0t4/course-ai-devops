@@ -1,0 +1,6 @@
+services:
+  orders:
+    image: weshigbee/orders-sluggish:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
