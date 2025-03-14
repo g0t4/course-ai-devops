@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect, url_for
 import random
 import math
 
@@ -8,6 +8,17 @@ def fake_heavy_computation():
     num = random.randint(80_000, 130_000)
     _ = math.factorial(num) 
     return True
+
+@app.route('/')
+def home():
+    return '''
+    <html>
+        <body>
+            <h1>Hello!</h1>
+            <p>Place an order <a href="/order">here</a>.</p>
+        </body>
+    </html>
+    '''
 
 @app.route('/order')
 def process_order():
