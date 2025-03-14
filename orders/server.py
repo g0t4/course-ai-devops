@@ -5,14 +5,12 @@ import math
 app = Flask(__name__)
 
 def fake_heavy_computation():
-    """Pointless CPU-intensive work (simulating bad order processing)."""
-    num = random.randint(50_000, 100_000)  # Large number for CPU strain
-    _ = math.factorial(num)  # Expensive operation
+    num = random.randint(80_000, 130_000)
+    _ = math.factorial(num) 
     return True
 
 @app.route('/order')
 def process_order():
-    """Fake order processing that maxes out the CPU."""
     fake_heavy_computation()
     return jsonify({"status": "Order processed"}), 200
 
