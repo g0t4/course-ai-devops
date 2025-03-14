@@ -72,7 +72,7 @@ def process_order():
     return jsonify(response), 200
 
 @app.errorhandler(404)
-def page_not_found():
+def page_not_found(_):
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
