@@ -1,0 +1,187 @@
+@app.route('/')
+def home():
+    return '''
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order Processing Service</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+                color: #333;
+                background-color: #f8f9fa;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+            
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem;
+                flex: 1;
+            }
+            
+            header {
+                background-color: #4a6fa5;
+                color: white;
+                padding: 1rem 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            
+            .header-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+            }
+            
+            .logo i {
+                margin-right: 0.5rem;
+            }
+            
+            .card {
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 2rem;
+                margin-top: 2rem;
+                text-align: center;
+                transition: transform 0.3s ease;
+            }
+            
+            .card:hover {
+                transform: translateY(-5px);
+            }
+            
+            h1 {
+                color: #2c3e50;
+                margin-bottom: 1.5rem;
+            }
+            
+            p {
+                color: #555;
+                margin-bottom: 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                display: inline-block;
+                background-color: #4a6fa5;
+                color: white;
+                padding: 0.8rem 1.5rem;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: bold;
+                transition: background-color 0.3s ease;
+            }
+            
+            .btn:hover {
+                background-color: #355685;
+            }
+            
+            .btn i {
+                margin-right: 0.5rem;
+            }
+            
+            .features {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-top: 3rem;
+            }
+            
+            .feature {
+                flex: 0 0 30%;
+                text-align: center;
+                padding: 1.5rem;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                margin-bottom: 2rem;
+            }
+            
+            .feature i {
+                font-size: 2.5rem;
+                color: #4a6fa5;
+                margin-bottom: 1rem;
+            }
+            
+            .feature h3 {
+                color: #2c3e50;
+                margin-bottom: 0.5rem;
+            }
+            
+            footer {
+                background-color: #2c3e50;
+                color: white;
+                text-align: center;
+                padding: 1.5rem 0;
+                margin-top: 3rem;
+            }
+            
+            @media (max-width: 768px) {
+                .feature {
+                    flex: 0 0 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shopping-cart"></i> Order Service
+                </div>
+            </div>
+        </header>
+        
+        <div class="container">
+            <div class="card">
+                <h1>Welcome to the Order Processing Service</h1>
+                <p>Our high-performance system is ready to process your orders quickly and efficiently.</p>
+                <a href="/order" class="btn"><i class="fas fa-paper-plane"></i> Place an Order</a>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Processing</h3>
+                    <p>Orders are processed with our optimized system for quick delivery.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Transactions</h3>
+                    <p>Your payment information is always protected with our secure system.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-truck"></i>
+                    <h3>Reliable Shipping</h3>
+                    <p>Multiple shipping options to meet your delivery timeline needs.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            &copy; 2025 Order Processing Service. All rights reserved.
+        </footer>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    </body>
+    </html>
+    '''
