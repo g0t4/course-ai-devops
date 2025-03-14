@@ -25,5 +25,10 @@ def process_order():
     fake_heavy_computation()
     return jsonify({"status": "Order processed"}), 200
 
+@app.errorhandler(404)
+def page_not_found(e):
+    # Redirect to home page for any unmapped routes
+    return redirect(url_for('home'))
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000)
