@@ -6,3 +6,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+          ignore:
+            - "*.pyc"
+            - "__pycache__/"
+            - ".git/"
+            - "uv.lock"
