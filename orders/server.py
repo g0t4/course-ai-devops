@@ -27,12 +27,10 @@ def process_order():
 
     fake_heavy_computation()
     
-    # Generate fake order details
     order_id = str(uuid.uuid4())
     products = ["Widget", "Gadget", "Doohickey", "Thingamajig"]
     order_items = []
     
-    # Generate 1-3 random items for the order
     num_items = random.randint(1, 3)
     order_total = 0
     
@@ -50,14 +48,11 @@ def process_order():
             "total": item_total
         })
     
-    # Generate order timestamp
     timestamp = datetime.datetime.now().isoformat()
     
-    # Calculate estimated delivery (3-7 days from now)
     delivery_days = random.randint(3, 7)
     delivery_date = (datetime.datetime.now() + datetime.timedelta(days=delivery_days)).strftime("%Y-%m-%d")
     
-    # Create the response
     response = {
         "status": "Order processed",
         "order_id": order_id,
