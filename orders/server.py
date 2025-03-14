@@ -1,21 +1,16 @@
 from flask import Flask, jsonify, redirect, url_for
+from flask.templating import render_template
 import random
 import math
 import datetime
 import uuid
 
+
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return '''
-    <html>
-        <body>
-            <h1>Hello!</h1>
-            <p>Place an order <a href="/order">here</a>.</p>
-        </body>
-    </html>
-    '''
+    return render_template('home.html')
 
 @app.route('/order')
 def process_order():
