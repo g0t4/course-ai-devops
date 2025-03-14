@@ -6,11 +6,6 @@ import uuid
 
 app = Flask(__name__)
 
-def fake_heavy_computation():
-    num = random.randint(80_000, 130_000)
-    _ = math.factorial(num) 
-    return True
-
 @app.route('/')
 def home():
     return '''
@@ -24,6 +19,12 @@ def home():
 
 @app.route('/order')
 def process_order():
+
+    def fake_heavy_computation():
+        num = random.randint(80_000, 130_000)
+        _ = math.factorial(num)
+        return True
+
     fake_heavy_computation()
     
     # Generate fake order details
