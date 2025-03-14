@@ -1,0 +1,11 @@
+## generating web.yaml
+
+/Users/wesdemos/repos/github/g0t4/course-ai-devops/orders
+
+Hey I have a web app that uses docker compose for dev, I need to get it running in minikube instead. Just a single web app with a deployment and service. Nothing vestigial. 
+
+--- 
+
+can you save those files to disk for me in an "infra" directory, put the deployment and service into a single manifest called web.yaml
+
+
