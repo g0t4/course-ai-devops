@@ -4,6 +4,8 @@ import random
 import math
 import datetime
 import uuid
+import socket
+import os
 
 
 app = Flask(__name__)
@@ -48,7 +50,18 @@ def process_order():
     delivery_days = random.randint(3, 7)
     delivery_date = (datetime.datetime.now() + datetime.timedelta(days=delivery_days)).strftime("%Y-%m-%d")
     
+    # Get server identification info
+    hostname = socket.gethostname()
+    try:
+        ip_address = socket.gethostbyname(hostname)
+    except:
+        ip_address = "unknown"
+    
     response = {
+        "_server": {
+            "hostname": hostname,
+            "ip": ip_address
+        },
         "status": "Order processed",
         "order_id": order_id,
         "timestamp": timestamp,
