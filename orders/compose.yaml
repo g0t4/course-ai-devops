@@ -1,6 +1,6 @@
 services:
   orders:
-    image: weshigbee/orders-sluggish:latest
+    image: weshigbee/orders-sluggish:v01
     ports:
       - "3000:3000"
     build:
