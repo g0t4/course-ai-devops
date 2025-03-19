@@ -1,0 +1,23 @@
+# example file: https://github.com/elastic/kibana/blob/main/config/kibana.yml
+# docs: https://www.elastic.co/guide/en/kibana/current/settings.html
+
+xpack.encryptedSavedObjects.encryptionKey: your-32-char-random-key-here9012
+xpack.security.encryptionKey: your-32-char-random-key-here9013
+xpack.reporting.encryptionKey: your-32-char-random-key-here9014
+
+# from docker container (the generated file):
+# ** THIS IS AN AUTO-GENERATED FILE **
+# Default Kibana configuration for docker target
+server.host: "0.0.0.0"
+server.shutdownTimeout: "5s"
+# elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+#   FYI use compose file for hosts since the name of the service can change there
+monitoring.ui.container.elasticsearch.enabled: true
+
+
+# =================== System: Logging ===================
+# Set the value of this setting to off to suppress all logging output, or to debug to log everything. Defaults to 'info'
+logging.root.level: debug
+# FYI this is BEST WAY to troubleshoot 500 ISEs with kibana web UI... but then turn it off as its insanely chatty
+#   [ERROR][http] 500 Server Error
+

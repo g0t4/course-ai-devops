@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JustinGrote/FluentBitJsonSchema/refs/heads/main/fluentbit.schema.yml
+
+# https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/yaml/service-section
+service:
+  log_level: info # off, error, warn, info, debug, and trace (cumulative)
+  parsers_file: /fluent-bit/etc/parsers.conf # use builtin parsers.conf file, by default doesn't include this
+
+pipeline:
+  inputs:
+    - name: tail
+      #
+      # FYI can get nginx CID from docker container ps to simlify testing this pipeline
+      path: /var/lib/docker/containers/0f89df5fc4eb*/*.log
+      # path: /var/lib/docker/containers/*/*.log # put this back when done testing pipelin
+      #
+      # path_key: log_path # adds "log_path"=>"/var/lib/docker/containers/b71825864...44cd747-json.log"
+      #   lets remove this to clear things up since my demo is all for one container
+      #
+      parser: docker # parse during input => log.(log|stream|time) are moved up a level
+      # FYI https://github.com/fluent/fluent-bit/blob/cfc9ba95efc6769f820726c7031e07942f84db97/conf/parsers.conf#L45-L58
+      #
+      # TODO drop redundant time/@timestamp fields?
+      # TODO decode log field? (look at k8s filter/docker filter, do I still need one of those?)
+      #
+      tag: docker.*
+      # docs: https://docs.fluentbit.io/manual/pipeline/inputs/tail
+      # source: https://github.com/fluent/fluent-bit/tree/master/plugins/in_tail
+
+  filters:
+    # rewrite tag to filter nginx separate of rest of logs and route it to a new nginx-access index in ES
+    - name: rewrite_tag
+      rule: log    ^\[nginx-access\]    nginx.access    false 
+      # KEY  REGEX  TAG   KEEP
+      #   KEY is field to match regex to
+      #   TAG is new tag (replaces tag)
+      #   KEEP the old record
+      #   original tag: docker.var.lib.docker.containers.b71825...44cd747-json.log
+      match: docker.*
+
+     # add key message for Kibana log stream view
+    - name: modify
+      match: nginx.access
+      Copy: log message
+
+
+  outputs:
+    # stdout is great for testing! get it right before pushing to ES
+    #     only run fluent-bit and nginx containers:  docker compose up web fluent-bit
+    #     docker compose log --follow --tail=1 fluent-bit
+    # - name: stdout
+    #   match: nginx.access
+    #   # match: '*'
+
+    - name: es
+      match: nginx.access
+      # match: nginx.*
+      host: ${FLUENT_ELASTICSEARCH_HOST}
+      port: ${FLUENT_ELASTICSEARCH_PORT}
+      index: logs-nginx-access
+      suppress_type_name: true # Prevents using `_type` (not supported by ES 7+)
