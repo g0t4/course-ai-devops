@@ -5,7 +5,8 @@ COPY pyproject.toml .
 COPY uv.lock .
 RUN uv sync --frozen
 
-COPY . .
+COPY server.py /src/
+COPY templates /src/templates
 EXPOSE 3000
 
 CMD ["uv", "run", "server.py"]
