@@ -57,5 +57,5 @@ pipeline:
       # match: nginx.*
       host: ${FLUENT_ELASTICSEARCH_HOST}
       port: ${FLUENT_ELASTICSEARCH_PORT}
-      index: logs-nginx-access
+      index: nginx-access
       suppress_type_name: true # Prevents using `_type` (not supported by ES 7+)
