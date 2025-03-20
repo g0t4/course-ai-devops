@@ -40,7 +40,8 @@ pipeline:
      # add key message for Kibana log stream view
     - name: modify
       match: nginx.access
-      Copy: log message
+      Rename: log message
+      # Copy: log message # can copy to keep original too
 
 
   outputs:
