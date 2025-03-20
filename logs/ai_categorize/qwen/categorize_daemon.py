@@ -96,7 +96,12 @@ def process_new_records():
 
     for hit in hits:
         print(f"\nDocument ID: {hit['_id']}")
+
+        start_time = time.time()
         category = categorize_document(hit)
+        duration_ms = (time.time() - start_time) * 1000
+        print(f"  took {duration_ms:.1f} ms")
+
         if category is None:
             print(f"  Failed to categorize document after 3 tries")
             continue
