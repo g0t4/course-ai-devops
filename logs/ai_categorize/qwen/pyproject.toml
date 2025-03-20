@@ -1,0 +1,10 @@
+[project]
+name = "fbek"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "elasticsearch>=8.17.2",
+    "requests>=2.32.3",
+]
