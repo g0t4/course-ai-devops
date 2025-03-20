@@ -51,6 +51,9 @@ services:
       - ./nginx/static:/static
 
   categorize:
+    # use docker compose to run the AI categorizer 
+    profiles:
+      - manual
     build:
       context: ./ai_categorize/qwen
 
