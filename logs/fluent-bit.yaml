@@ -9,9 +9,9 @@ pipeline:
   inputs:
     - name: tail
       #
-      # FYI put the CID from docker container ps to simlify testing this pipeline
-      path: /var/lib/docker/containers/5e720eb68216*/*.log
-      # path: /var/lib/docker/containers/*/*.log # put this back when done testing pipelin
+      # ! FYI you can put the CID from docker container ps to simlify testing this pipeline
+      # path: /var/lib/docker/containers/5e720eb68216*/*.log
+      path: /var/lib/docker/containers/*/*.log # put this back when done testing pipelin
       #
       # path_key: log_path # adds "log_path"=>"/var/lib/docker/containers/b71825864...44cd747-json.log"
       #   lets remove this to clear things up since my demo is all for one container
