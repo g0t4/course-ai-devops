@@ -50,7 +50,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/static:/static
 
-  ai-categorize:
+  categorize:
     build:
       context: ./ai_categorize/qwen
 
