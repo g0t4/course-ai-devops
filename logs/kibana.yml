@@ -17,7 +17,7 @@ monitoring.ui.container.elasticsearch.enabled: true
 
 # =================== System: Logging ===================
 # Set the value of this setting to off to suppress all logging output, or to debug to log everything. Defaults to 'info'
-logging.root.level: debug
+# logging.root.level: debug
 # FYI this is BEST WAY to troubleshoot 500 ISEs with kibana web UI... but then turn it off as its insanely chatty
 #   [ERROR][http] 500 Server Error
 
